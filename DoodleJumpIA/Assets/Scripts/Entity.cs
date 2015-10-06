@@ -5,7 +5,7 @@ using System.Collections;
 [ExecuteInEditMode]
 [SelectionBase]
 [DisallowMultipleComponent]
-class Entity : MonoBehaviour
+public class Entity : MonoBehaviour
 {
     [SerializeField]
     EntityType type = EntityType.Player;
@@ -18,9 +18,14 @@ class Entity : MonoBehaviour
     float sphereCollider = 1f;
     Vector2 direction;
 
-    void Awake()
+    void OnEnable()
     {
+        Engine.AddEntity(this);
+    }
 
+    void OnDisable()
+    {
+        Engine.RemoveEntity(this);
     }
 
     void Update()
@@ -52,6 +57,15 @@ class Entity : MonoBehaviour
             return _state;
         }
     }
+
+    public void SetState(EntityState state)
+    {
+
+    }
+
+    #endregion
+
+    #region interactions
 
     #endregion
 }
