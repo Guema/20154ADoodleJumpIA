@@ -1,6 +1,11 @@
 using UnityEngine;
 using System.Collections;
 
+public enum Control
+{
+    Left = 1,
+    Right = 2,
+}
 
 public enum EntityType
 {
@@ -29,6 +34,7 @@ public struct EntityState
 }
 
 [ExecuteInEditMode]
+[SelectionBase]
 class Entity : MonoBehaviour
 {
     [SerializeField]
@@ -59,7 +65,9 @@ class Entity : MonoBehaviour
     void Update()
     {
         if (!Application.isPlaying)
+        {
             state.position = transform.position;
+        }   
         transform.position = state.position;
     }
 

@@ -20,12 +20,8 @@ public class GameState
     /// </summary>
     /// <param name="nbFrames">number of frames(time) to precompute</param>
     /// <returns></returns>
-    GameState[] ComputeGameStates(int nbFrames)
+    GameState[] ComputeGameStates(GameState state, int nbFrames)
     {
-
-
-
-        //Temporary
         return new GameState[0];
     }
 }
