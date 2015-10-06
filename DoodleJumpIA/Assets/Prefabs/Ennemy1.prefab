@@ -68,12 +68,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9ab639480e1fa45a7be16f85e942cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state:
-    type: 4
-    isAlive: 1
-    speed: 1
-    sphereCollider: .25
-    position: {x: -.711000025, y: 1.09200001}
+  type: 4
+  isAlive: 1
+  speed: 0
+  sphereCollider: 1
+  position: {x: 0, y: 0}
 --- !u!212 &21289734
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -106,7 +105,19 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: isAlive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: sphereCollider
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 102284}

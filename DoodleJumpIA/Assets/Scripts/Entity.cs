@@ -1,79 +1,57 @@
 using UnityEngine;
 using System.Collections;
 
-public enum Control
-{
-    Left = 1,
-    Right = 2,
-}
-
-public enum EntityType
-{
-    Player = 1,
-    Platform = 2,
-    Ennemy = 4,
-}
-
-[System.Serializable]
-public struct EntityState
-{
-    [SerializeField]
-    public EntityType type;
-    [SerializeField]
-    public bool isAlive;
-    [System.NonSerialized]
-    public bool isGrounded;
-    [SerializeField]
-    public float speed;
-    [SerializeField]
-    public float sphereCollider;
-    [System.NonSerialized]
-    public Vector2 direction;
-    [SerializeField]
-    public Vector2 position;
-}
 
 [ExecuteInEditMode]
 [SelectionBase]
+[DisallowMultipleComponent]
 class Entity : MonoBehaviour
 {
     [SerializeField]
-    EntityState state = new EntityState()
-    {
-        type = EntityType.Player,
-        isAlive = true,
-        isGrounded = false,
-        speed = 1f,
-        sphereCollider = 1f,
-        direction = Vector2.zero,
-        position = Vector2.zero
-    };
+    EntityType type = EntityType.Player;
+    [SerializeField]
+    bool isAlive = true;
+    bool isGrounded = false;
+    [SerializeField]
+    float speed = 1f;
+    [SerializeField]
+    float sphereCollider = 1f;
+    Vector2 direction;
 
-    public EntityState State
-    {
-        get
-        {
-            return state;
-        }
-    }
-
-    void Start()
+    void Awake()
     {
 
     }
 
     void Update()
     {
-        if (!Application.isPlaying)
-        {
-            state.position = transform.position;
-        }   
-        transform.position = state.position;
+
     }
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, state.sphereCollider);
+        //Gizmos.color = Color.green;
+        //Gizmos.DrawWireSphere(transform.position, state.sphereCollider);
     }
+
+    #region state managing
+
+    EntityState _state;
+
+    public EntityState State
+    {
+        get
+        {
+            _state.type = type;
+            _state.isAlive = isAlive;
+            _state.isGrounded = isGrounded;
+            _state.speed = speed;
+            _state.sphereCollider = sphereCollider;
+            _state.direction = direction;
+            _state.position = transform.position;
+            return _state;
+        }
+    }
+
+    #endregion
 }
