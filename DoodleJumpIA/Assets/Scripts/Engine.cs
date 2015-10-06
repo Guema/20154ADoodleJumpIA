@@ -6,33 +6,31 @@ using Worldstate = System.Collections.Generic.Dictionary<Entity, EntityState>;
 [DisallowMultipleComponent]
 public class Engine : MonoBehaviour
 {
+    Worldstate actualWorldState = new Worldstate(1000);
 
-    static Engine engine;
-    Worldstate actualWorldState = new Worldstate(10000);
-
-    void Awake ()
+    void Awake()
     {
-        engine = this;
-	}
+
+    }
 	
-	void Update ()
+	void Update()
     {
-	       
-	}
+        
+    }
 
     void FixedUpdate()
     {
-
+        UpdateActualWorldState();
     }
 
-    public static void AddEntity(Entity entity)
+    public void AddEntity(Entity entity)
     {
-        engine.actualWorldState.Add(entity, entity.State);
+        actualWorldState.Add(entity, entity.State);
     }
 
-    public static void RemoveEntity(Entity entity)
+    public void RemoveEntity(Entity entity)
     {
-        engine.actualWorldState.Remove(entity);
+        actualWorldState.Remove(entity);
     }
 
     /// <summary>
@@ -41,7 +39,11 @@ public class Engine : MonoBehaviour
     /// <param name="state">World state to apply</param>
     void UpdateActualWorldState()
     {
-        var i = actualWorldState.GetEnumerator();
+        var iter = actualWorldState.GetEnumerator();
+        while(iter.MoveNext())
+        {
+            actualWorldState[iter.Current.Key] = iter.Current.Key.State;
+        }
     }
 
     /// <summary>
@@ -49,8 +51,11 @@ public class Engine : MonoBehaviour
     /// </summary>
     /// <param name="nbFrames">number of frames(time) to precompute</param>
     /// <returns></returns>
-    Worldstate[] ComputeGameStates(int nbFrames)
+    Worldstate[] ComputeNextStates(int nbFrames)
     {
+        //Worldstate[] nextStates = new Worldstate[];
+
+
         return new Worldstate[0];
     }
 }

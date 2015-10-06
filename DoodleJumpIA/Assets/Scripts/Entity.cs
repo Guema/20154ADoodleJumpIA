@@ -16,16 +16,18 @@ public class Entity : MonoBehaviour
     float speed = 1f;
     [SerializeField]
     float sphereCollider = 1f;
+    [SerializeField]
+    bool useGravity = false;
     Vector2 direction;
 
     void OnEnable()
     {
-        Engine.AddEntity(this);
+
     }
 
     void OnDisable()
     {
-        Engine.RemoveEntity(this);
+
     }
 
     void Update()
@@ -35,8 +37,8 @@ public class Entity : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-        //Gizmos.color = Color.green;
-        //Gizmos.DrawWireSphere(transform.position, state.sphereCollider);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, sphereCollider);
     }
 
     #region state managing
