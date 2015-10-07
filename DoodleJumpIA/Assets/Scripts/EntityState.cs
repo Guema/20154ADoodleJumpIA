@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum Control
+public struct Control
 {
-    Left = 1,
-    Right = 2,
+    public bool Left;
+    public bool Right;
 }
+
+
 
 public enum EntityType
 {

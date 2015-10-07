@@ -32,8 +32,9 @@ public class Entity : MonoBehaviour
 
     void Update()
     {
-
     }
+
+
 
     void OnDrawGizmosSelected()
     {
@@ -52,13 +53,41 @@ public class Entity : MonoBehaviour
             _state.type = type;
             _state.isAlive = isAlive;
             _state.isGrounded = isGrounded;
-            _state.speed = speed;
+            _state.speed = Speed;
             _state.sphereCollider = sphereCollider;
-            _state.direction = direction;
+            _state.direction = Direction;
             _state.position = transform.position;
             return _state;
         }
     }
+
+    #region geter/seter
+    public Vector2 Direction
+    {
+        get
+        {
+            return direction;
+        }
+
+        set
+        {
+            direction = value;
+        }
+    }
+
+    public float Speed
+    {
+        get
+        {
+            return speed;
+        }
+
+        set
+        {
+            speed = value;
+        }
+    }
+    #endregion
 
     public void SetState(EntityState state)
     {
