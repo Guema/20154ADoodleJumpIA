@@ -15,6 +15,8 @@ public class Entity : MonoBehaviour
     [SerializeField]
     float speed = 1f;
     [SerializeField]
+    ColliderType coltype = ColliderType.Square;
+    [SerializeField]
     float sphereCollider = 1f;
     [SerializeField]
     bool useGravity = false;
@@ -38,7 +40,11 @@ public class Entity : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, sphereCollider);
+        if(coltype == ColliderType.Circle)
+        {
+            Gizmos.DrawWireSphere(transform.position, sphereCollider);
+        }
+        
     }
 
     #region state managing

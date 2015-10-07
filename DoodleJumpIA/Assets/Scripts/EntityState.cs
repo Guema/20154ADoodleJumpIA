@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum ColliderType
+{
+    Square,
+    Circle
+}
+
 public enum Control
 {
     Left = 1,

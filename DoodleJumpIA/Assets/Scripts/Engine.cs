@@ -7,15 +7,17 @@ using Worldstate = System.Collections.Generic.Dictionary<Entity, EntityState>;
 public class Engine : MonoBehaviour
 {
     Worldstate actualWorldState = new Worldstate(1000);
+    [SerializeField]
+    int prout = 0;
 
     void Awake()
     {
-
+        AddEntity(GetComponentsInChildren<Entity>());
     }
 	
 	void Update()
     {
-        
+
     }
 
     void FixedUpdate()
@@ -23,14 +25,40 @@ public class Engine : MonoBehaviour
         UpdateActualWorldState();
     }
 
+    /// <summary>
+    /// Add entity(ies) in dictionary.
+    /// </summary>
+    /// <param name="entity">Entity(ies) to add.</param>
     public void AddEntity(Entity entity)
     {
         actualWorldState.Add(entity, entity.State);
     }
 
+    public void AddEntity(Entity[] entity)
+    {
+        for(int i = 0; i<entity.Length; i++)
+        {
+            prout++;
+            actualWorldState.Add(entity[i], entity[i].State);
+        }
+    }
+
+
+    /// <summary>
+    /// Remove Entity(ies) from dictionary.
+    /// </summary>
+    /// <param name="entity">Entity(ies) to remove.</param>
     public void RemoveEntity(Entity entity)
     {
         actualWorldState.Remove(entity);
+    }
+
+    public void RemoveEntity(Entity[] entity)
+    {
+        for (int i = 0; i < entity.Length; i++)
+        {
+            actualWorldState.Remove(entity[i]);
+        }
     }
 
     /// <summary>
@@ -54,8 +82,6 @@ public class Engine : MonoBehaviour
     Worldstate[] ComputeNextStates(int nbFrames)
     {
         //Worldstate[] nextStates = new Worldstate[];
-
-
-        return new Worldstate[0];
+        return new Worldstate[nbFrames];
     }
 }
