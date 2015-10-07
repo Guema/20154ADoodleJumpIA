@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public enum ColliderType
@@ -16,19 +16,32 @@ public enum Control
 
 public enum EntityType
 {
-    Player = 1,
+    Doodle = 1,
     Platform = 2,
     Ennemy = 4,
 }
 
+//Temporaire
 public struct EntityState
 {
+    #region Const Values
+    /// <summary>
+    /// MyEngine_Init only
+    /// </summary>
     public EntityType type;
-    public bool isAlive;
+    /// <summary>
+    /// MyEngine_Init only
+    /// </summary>
     public bool canMove;
-    public float speed;
-    public float sphereCollider;
-    public Vector2 direction;
+    /// <summary>
+    /// MyEngine_Init only
+    /// </summary>
     public Vector2 position;
+    #endregion
+    #region Changing Values
+    public bool isAlive;
+    public bool useGravity;
+    public Vector2 speed;
     public Control control;
+    #endregion
 }

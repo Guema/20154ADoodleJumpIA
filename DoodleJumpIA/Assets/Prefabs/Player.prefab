@@ -8,8 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 447112}
-  - 114: {fileID: 11445846}
-  - 114: {fileID: 11410488}
+  - 114: {fileID: 11442884}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -58,7 +57,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 447112}
   m_RootOrder: 0
---- !u!114 &11410488
+--- !u!114 &11442884
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -66,28 +65,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 156850}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba047419a7dd1754791bfffa8b8ab32a, type: 3}
+  m_Script: {fileID: 11500000, guid: 20c140efce155e74c9757d823a87c1f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entity: {fileID: 11445846}
---- !u!114 &11445846
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 156850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da9ab639480e1fa45a7be16f85e942cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 1
-  isAlive: 1
-  canMove: 1
   speed: 1
-  coltype: 2
-  sphereCollider: .300000012
   useGravity: 1
+  isAlive: 1
 --- !u!212 &21205524
 SpriteRenderer:
   m_ObjectHideFlags: 1
