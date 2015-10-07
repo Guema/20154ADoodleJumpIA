@@ -70,7 +70,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 4
   isAlive: 1
+  canMove: 0
   speed: 0
+  coltype: 2
   sphereCollider: .300000012
   useGravity: 0
 --- !u!212 &21289734
@@ -116,7 +118,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: sphereCollider
-      value: 1
+      value: .300000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: coltype
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

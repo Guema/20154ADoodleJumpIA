@@ -11,7 +11,8 @@ public class Entity : MonoBehaviour
     EntityType type = EntityType.Player;
     [SerializeField]
     bool isAlive = true;
-    bool isGrounded = false;
+    [SerializeField]
+    bool canMove = false;
     [SerializeField]
     float speed = 1f;
     [SerializeField]
@@ -21,21 +22,7 @@ public class Entity : MonoBehaviour
     [SerializeField]
     bool useGravity = false;
     Vector2 direction;
-
-    void OnEnable()
-    {
-
-    }
-
-    void OnDisable()
-    {
-
-    }
-
-    void Update()
-    {
-
-    }
+    Control control = Control.Stop;
 
     void OnDrawGizmosSelected()
     {
@@ -44,7 +31,6 @@ public class Entity : MonoBehaviour
         {
             Gizmos.DrawWireSphere(transform.position, sphereCollider);
         }
-        
     }
 
     #region state managing
@@ -57,23 +43,36 @@ public class Entity : MonoBehaviour
         {
             _state.type = type;
             _state.isAlive = isAlive;
-            _state.isGrounded = isGrounded;
+            _state.canMove = canMove;
             _state.speed = speed;
             _state.sphereCollider = sphereCollider;
             _state.direction = direction;
             _state.position = transform.position;
+            _state.control = control;
             return _state;
         }
     }
 
-    public void SetState(EntityState state)
+    public void Engine_SetState(EntityState state)
     {
 
     }
 
     #endregion
 
-    #region interactions
+    #region GET/SET
 
+    public Control Control
+    {
+        get
+        {
+            return control;
+        }
+
+        set
+        {
+            control = value;
+        }
+    }
     #endregion
 }

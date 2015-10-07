@@ -21,7 +21,20 @@ public class Engine : MonoBehaviour
 
     void FixedUpdate()
     {
-        UpdateActualWorldState();
+        foreach(var i in actualWorldState)
+        {
+            if(i.Value.canMove)
+            {
+                if(i.Key.State.control == Control.Left)
+                {
+                    i.Key.transform.Translate(Vector2.left*Time.deltaTime);
+                }
+                else if(i.Key.State.control == Control.Right)
+                {
+                    i.Key.transform.Translate(Vector2.right*Time.deltaTime);
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -41,7 +54,6 @@ public class Engine : MonoBehaviour
         }
     }
 
-
     /// <summary>
     /// Remove Entity(ies) from dictionary.
     /// </summary>
@@ -60,25 +72,12 @@ public class Engine : MonoBehaviour
     }
 
     /// <summary>
-    /// This method make the world take the state given in parameter
-    /// </summary>
-    /// <param name="state">World state to apply</param>
-    void UpdateActualWorldState()
-    {
-        for(int i = 0; i<actualWorldState.Count; i++)
-        {
-            actualWorldState[actualWorldState.ElementAt(i).Key] = actualWorldState.ElementAt(i).Key.State;
-        }
-    }
-
-    /// <summary>
     /// This methode compute next possible worldStates and return this in the form of a tree.
     /// </summary>
     /// <param name="nbFrames">number of frames(time) to precompute</param>
     /// <returns></returns>
     Worldstate[] ComputeNextStates(int nbFrames)
     {
-        //Worldstate[] nextStates = new Worldstate[];
-        return new Worldstate[nbFrames];
+        return new Worldstate[0];
     }
 }

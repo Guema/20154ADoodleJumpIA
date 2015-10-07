@@ -3,14 +3,15 @@ using System.Collections;
 
 public enum ColliderType
 {
-    Square,
-    Circle
+    Square = 1,
+    Circle = 2
 }
 
 public enum Control
 {
-    Left = 1,
+    Stop = 1,
     Right = 2,
+    Left = 4
 }
 
 public enum EntityType
@@ -24,9 +25,10 @@ public struct EntityState
 {
     public EntityType type;
     public bool isAlive;
-    public bool isGrounded;
+    public bool canMove;
     public float speed;
     public float sphereCollider;
     public Vector2 direction;
     public Vector2 position;
+    public Control control;
 }
