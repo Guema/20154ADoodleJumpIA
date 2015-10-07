@@ -1,15 +1,14 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Worldstate = System.Collections.Generic.Dictionary<Entity, EntityState>;
 
 [DisallowMultipleComponent]
 public class Engine : MonoBehaviour
 {
     Worldstate actualWorldState = new Worldstate(1000);
-    [SerializeField]
-    int prout = 0;
-
+    
     void Awake()
     {
         AddEntity(GetComponentsInChildren<Entity>());
@@ -38,7 +37,6 @@ public class Engine : MonoBehaviour
     {
         for(int i = 0; i<entity.Length; i++)
         {
-            prout++;
             actualWorldState.Add(entity[i], entity[i].State);
         }
     }
@@ -67,10 +65,9 @@ public class Engine : MonoBehaviour
     /// <param name="state">World state to apply</param>
     void UpdateActualWorldState()
     {
-        var iter = actualWorldState.GetEnumerator();
-        while(iter.MoveNext())
+        for(int i = 0; i<actualWorldState.Count; i++)
         {
-            actualWorldState[iter.Current.Key] = iter.Current.Key.State;
+            actualWorldState[actualWorldState.ElementAt(i).Key] = actualWorldState.ElementAt(i).Key.State;
         }
     }
 
