@@ -31,7 +31,7 @@ public class MyGameEngine : MonoBehaviour
 
     #region Game Engine
 
-    WorldState worldState;
+    WorldState worldState = new WorldState(1000);
 
     /// <summary>
     /// This method once to serialize all GameEntities to make the engine able to use them.

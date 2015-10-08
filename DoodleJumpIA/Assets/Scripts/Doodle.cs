@@ -22,7 +22,7 @@ public class Doodle : Entity
     float speed = 1f;
     [SerializeField]
     bool useGravity = true;
-    Vector2 MoveVector;
+    Vector2 MoveVector = Vector2.zero;
     [SerializeField]
     bool isAlive = true;
     EntityState _state;
