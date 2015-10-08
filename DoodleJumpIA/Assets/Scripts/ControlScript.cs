@@ -16,11 +16,12 @@ public class ControlScript : MonoBehaviour {
 
  
     void Update() {
-        transform.Translate((Vector2.up * 2) * 4f * Time.deltaTime);
+        
     }
 
-    void FixedUpdate() { 
+    void FixedUpdate() {
         //Declaration des inputs valables
+        transform.Translate((Vector2.up * 2) * 4f * Time.deltaTime);
         bool WantMoveToRight = Input.GetKey(KeyCode.RightArrow);
         bool WantMoveToLeft = Input.GetKey(KeyCode.LeftArrow);
         bool WantMoveToTop = Input.GetKey(KeyCode.UpArrow);
