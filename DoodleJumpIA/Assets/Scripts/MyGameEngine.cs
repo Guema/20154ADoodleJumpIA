@@ -52,7 +52,7 @@ public class MyGameEngine : MonoBehaviour
     public void AddEntity(Entity entity)
     {
         if(!worldState.ContainsKey(entity))
-            worldState.Add(entity, entity.MyEngine_Init());
+            worldState.Add(entity, entity.Me_Start());
     } 
 
     /// <summary>

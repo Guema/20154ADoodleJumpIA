@@ -5,20 +5,39 @@ using System.Collections;
 [SelectionBase]
 public abstract class Entity : MonoBehaviour 
 {
+    #region Base Members
+    protected Vector2 moveVector = Vector2.zero;
 
-    /// <summary>
-    /// This method will be called when MyGameEngine has to set a new state for this Entity
-    /// </summary>
-    /// <param name="state"></param>
-    public abstract void MyEngine_SetState(EntityState state);
+    public Vector2 MoveVector
+    {
+        get
+        {
+            return moveVector;
+        }
+
+        set
+        {
+            moveVector = value;
+        }
+    }
+
+    #endregion
+
+    #region Interface
     /// <summary>
     /// This method will be called once, and is here to init MyGameEngine with initial state
     /// </summary>
     /// <returns></returns>
-    public abstract EntityState MyEngine_Init();
+    public abstract EntityState Me_Start();
     /// <summary>
-    /// This method will be called on each FixedUpdate and is here to update parameters Entity can change during runtime.
+    /// This method will be called on each FixedUpdate, and represent Entity desisions
     /// </summary>
-    /// <returns></returns>
-    public abstract EntityState MyEngine_GetWill();
+    /// <returns>Initial State</returns>
+    public abstract EntityAction Me_Action();
+    /// <summary>
+    /// This method will be called on each FixedUpdate to actualise Entity
+    /// </summary>
+    /// <param name="state"></param>
+    public abstract void Me_Update(EntityState state);
+    #endregion
 }

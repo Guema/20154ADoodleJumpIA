@@ -26,22 +26,31 @@ public struct EntityState
 {
     #region Const Values
     /// <summary>
-    /// MyEngine_Init only
+    /// EntityState only
     /// </summary>
     public EntityType type;
     /// <summary>
-    /// MyEngine_Init only
+    /// EntityState only
     /// </summary>
     public bool canMove;
     /// <summary>
-    /// MyEngine_Init only
+    /// EntityState only
     /// </summary>
     public Vector2 position;
-    #endregion
-    #region Changing Values
-    public bool isAlive;
+    /// <summary>
+    /// EntityState only
+    /// </summary>
     public bool useGravity;
+    /// <summary>
+    /// EntityState only
+    /// </summary>
+    public bool isAlive;
+    #endregion
+    public EntityAction initial;
+}
+
+public struct EntityAction
+{
     public Vector2 speed;
     public Control control;
-    #endregion
 }
