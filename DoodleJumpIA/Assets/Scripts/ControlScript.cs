@@ -19,6 +19,15 @@ public class ControlScript : MonoBehaviour {
         
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        //destruction du personnage au contact des ennemis
+        if (collision.gameObject.name == "Ennemy1" | collision.gameObject.name == "Ennemy2" | collision.gameObject.name == "Ennemy3")
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void FixedUpdate() {
         //Declaration des inputs valables
         transform.Translate((Vector2.up * 2) * 4f * Time.deltaTime);
