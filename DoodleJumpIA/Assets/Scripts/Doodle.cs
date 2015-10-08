@@ -5,10 +5,26 @@ using System;
 public class Doodle : Entity
 {
     #region Unity Methods
+
+    void Update()
+    {
+        if (Control.Left == Control)
+        {
+            moveVector[0] = -speed*Time.deltaTime;
+        }
+        else if (Control.Right == Control)
+        {
+            moveVector[0] = speed * Time.deltaTime;
+        }
+        else
+        {
+            moveVector[0] = 0f;
+        }
+    }
+
     #endregion
 
     #region Entity
-
     [SerializeField]
     float speed = 1f;
     [SerializeField]
@@ -16,6 +32,8 @@ public class Doodle : Entity
     [SerializeField]
     bool isAlive = true;
     EntityAction _state;
+
+
 
     //This is just initialisation. i can write raw things.
     public override EntityState Me_Start()
@@ -38,7 +56,8 @@ public class Doodle : Entity
     //This is an update method. 
     public override EntityAction Me_Action()
     {
-        _state.speed = MoveVector;
+        _state.speed = moveVector;
+        _state.control = control;
         return _state;
     }
 

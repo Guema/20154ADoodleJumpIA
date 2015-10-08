@@ -6,20 +6,23 @@ using System.Collections;
 public abstract class Entity : MonoBehaviour 
 {
     #region Base Members
-    protected Vector2 moveVector = Vector2.zero;
 
-    public Vector2 MoveVector
+    protected Vector2 moveVector;
+    protected Control control;
+
+    public Control Control
     {
         get
         {
-            return moveVector;
+            return control;
         }
 
         set
         {
-            moveVector = value;
+            control = value;
         }
     }
+
 
     #endregion
 
@@ -33,7 +36,10 @@ public abstract class Entity : MonoBehaviour
     /// This method will be called on each FixedUpdate, and represent Entity desisions
     /// </summary>
     /// <returns>Initial State</returns>
-    public abstract EntityAction Me_Action();
+    public virtual EntityAction Me_Action()
+    {
+        return EntityAction.Default;
+    }
     /// <summary>
     /// This method will be called on each FixedUpdate to actualise Entity
     /// </summary>

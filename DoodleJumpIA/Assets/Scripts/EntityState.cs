@@ -21,7 +21,6 @@ public enum EntityType
     Ennemy = 4,
 }
 
-//Temporaire
 public struct EntityState
 {
     #region Const Values
@@ -53,4 +52,16 @@ public struct EntityAction
 {
     public Vector2 speed;
     public Control control;
+
+    public static EntityAction Default
+    {
+        get
+        {
+            return new EntityAction
+            {
+                speed = Vector2.zero,
+                control = Control.Stop
+            };
+        }
+    }
 }
