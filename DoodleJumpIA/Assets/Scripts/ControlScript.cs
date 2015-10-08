@@ -17,7 +17,6 @@ public class ControlScript : MonoBehaviour {
  
     void Update() {
         transform.Translate((Vector2.up * 2) * 4f * Time.deltaTime);
-        rigidbody2D.collider2D.
     }
 
     void FixedUpdate() { 
