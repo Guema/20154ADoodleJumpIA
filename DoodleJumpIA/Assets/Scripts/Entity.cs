@@ -38,8 +38,8 @@ public class Entity : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, sphereCollider);
+      /*  Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, sphereCollider*/
     }
 
     #region state managing

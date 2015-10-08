@@ -7,20 +7,25 @@ public class ControlScript : MonoBehaviour {
     Entity type;
 
     Control control;
+    private Rigidbody _rigidbody;
 
-    // Use this for initialization
+
     void Start () {
-	
-	}
 
-    // Update is called once per frame
+    }
+
+ 
     void Update() {
+        transform.Translate((Vector2.up * 2) * 4f * Time.deltaTime);
+        rigidbody2D.collider2D.
     }
 
     void FixedUpdate() { 
         //Declaration des inputs valables
-        bool WantMoveToRight = Input.GetKeyDown(KeyCode.RightArrow);
-        bool WantMoveToLeft = Input.GetKeyDown(KeyCode.LeftArrow);
+        bool WantMoveToRight = Input.GetKey(KeyCode.RightArrow);
+        bool WantMoveToLeft = Input.GetKey(KeyCode.LeftArrow);
+        bool WantMoveToTop = Input.GetKey(KeyCode.UpArrow);
+        bool WantMoveToBot = Input.GetKey(KeyCode.DownArrow);
 
         bool WantToCast = Input.GetKeyDown(KeyCode.Mouse0);
 
@@ -29,14 +34,26 @@ public class ControlScript : MonoBehaviour {
         bool SwitchBlock_Three = Input.GetKeyDown(KeyCode.E);
         bool SwitchBlock_Four = Input.GetKeyDown(KeyCode.R);
 
+        Vector3 direction = Vector3.zero;
         //appel de la méthode en fonction du controle demandé
         if (WantMoveToRight)
         {
-            Debug.Log("droite !");           
+            //transform.Translate(new Vector3(1, 0, 0)/7); 
+            transform.Translate(Vector2.right * 4f * Time.deltaTime);
         }
         if (WantMoveToLeft)
         {
-            Debug.Log("gauche !");
+            //transform.Translate(new Vector3(-1, 0, 0)/7);
+            transform.Translate(Vector2.left * 4f * Time.deltaTime);
+        }
+     /*   if (WantMoveToTop)
+        {
+            //transform.Translate(new Vector3(0, 1, 0)/7);
+            transform.Translate((Vector2.up*2) * 4f * Time.deltaTime);
+        }*/
+        if (WantMoveToBot)
+        {
+            transform.Translate(new Vector3(0, -1, 0)/7);
         }
 
         if (WantToCast)

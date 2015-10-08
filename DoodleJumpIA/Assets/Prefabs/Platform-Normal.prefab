@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 494742}
   - 114: {fileID: 11483150}
+  - 61: {fileID: 6180050}
   m_Layer: 0
   m_Name: Platform-Normal
   m_TagString: Untagged
@@ -51,12 +52,25 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109412}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.10111904, y: -4.17645741, z: 0}
+  m_LocalPosition: {x: .0764621794, y: -2.41618705, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 413466}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!61 &6180050
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109412}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1.54999995, y: .150000006}
 --- !u!114 &11483150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -72,7 +86,7 @@ MonoBehaviour:
   isAlive: 1
   speed: 0
   sphereCollider: 1
-  position: {x: 0, y: 0}
+  useGravity: 0
 --- !u!212 &21244236
 SpriteRenderer:
   m_ObjectHideFlags: 1
