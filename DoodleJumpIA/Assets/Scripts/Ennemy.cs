@@ -2,34 +2,39 @@ using UnityEngine;
 using System.Collections;
 using System;
 
-public class Doodle : Entity
+public class Ennemy : Entity
 {
     #region Unity Methods
 
     void Update()
     {
+        //computing left/right ctrl
         if (Control.Left == Control)
         {
             moveVector[0] = -speed*Time.deltaTime;
         }
         else if (Control.Right == Control)
         {
-            moveVector[0] = speed * Time.deltaTime;
+            moveVector[0] = speed*Time.deltaTime;
         }
         else
         {
             moveVector[0] = 0f;
         }
 
+        //computing fall/jump ctrl
         if (useGravity)
         {
-            moveVector[1] = Physics.gravity[1] * Time.deltaTime;
+            moveVector[1] = moveVector[1] + Physics.gravity[1]*Time.deltaTime;
         }
+
     }
 
     #endregion
 
     #region Entity
+    [SerializeField]
+    bool canMove = false;
     [SerializeField]
     float speed = 1f;
     [SerializeField]
@@ -38,15 +43,13 @@ public class Doodle : Entity
     bool isAlive = true;
     EntityAction _state;
 
-
-
     //This is just initialisation. i can write raw things.
     public override EntityState Me_Start()
     {
         return new EntityState
         {
-            type = EntityType.Doodle,
-            canMove = true,
+            type = EntityType.Ennemy,
+            canMove = canMove,
             position = transform.position,
             useGravity = useGravity,
             isAlive = isAlive,

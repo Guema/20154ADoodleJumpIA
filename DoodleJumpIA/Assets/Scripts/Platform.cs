@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System;
 
-public class Doodle : Entity
+public class Platform : Entity
 {
     #region Unity Methods
 
@@ -20,20 +20,17 @@ public class Doodle : Entity
         {
             moveVector[0] = 0f;
         }
-
-        if (useGravity)
-        {
-            moveVector[1] = Physics.gravity[1] * Time.deltaTime;
-        }
     }
 
     #endregion
 
     #region Entity
     [SerializeField]
+    bool canMove = false;
+    [SerializeField]
     float speed = 1f;
     [SerializeField]
-    bool useGravity = true;
+    bool useGravity = false;
     [SerializeField]
     bool isAlive = true;
     EntityAction _state;
@@ -45,8 +42,8 @@ public class Doodle : Entity
     {
         return new EntityState
         {
-            type = EntityType.Doodle,
-            canMove = true,
+            type = EntityType.Platform,
+            canMove = canMove,
             position = transform.position,
             useGravity = useGravity,
             isAlive = isAlive,
